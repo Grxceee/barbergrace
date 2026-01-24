@@ -1,0 +1,682 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root{
+  --bg1:#1b0035;
+  --bg2:#000;
+  --glass: rgba(255,255,255,0.08);
+  --glow: rgba(199,125,255,0.55);
+  --txt: #fff;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+  color: var(--txt);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+}
+
+/* ===============================
+   INTRO
+================================ */
+.intro-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.intro-title {
+  font-size: 3.5rem;
+  margin-bottom: 40px;
+  animation: float 4s ease-in-out infinite;
+  background: linear-gradient(90deg, #fff, #c77dff);
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 20px #c77dff);
+  transform: perspective(800px) rotateX(15deg);
+}
+
+.intro-title span { font-size: 2.8rem; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) perspective(800px) rotateX(15deg); }
+  50% { transform: translateY(-20px) perspective(800px) rotateX(15deg); }
+}
+
+#enter-btn {
+  padding: 15px 40px;
+  font-size: 1rem;
+  border-radius: 30px;
+  border: 2px solid white;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+#enter-btn:hover { background: white; color: black; transform: scale(1.1); }
+
+/* ===============================
+   NAVBAR
+================================ */
+.navbar {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 40px;
+}
+
+.logo {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+.logo:hover { transform: scale(1.12); }
+
+.navbar ul {
+  display: flex;
+  gap: 18px;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nav-item a { color: white; text-decoration: none; }
+.nav-item:hover { background: white; color: black; transform: translateY(-3px); }
+.nav-item:hover a { color: black; }
+
+/* ===============================
+   HERO / SECTIONS
+================================ */
+main { padding-bottom: 60px; }
+
+.hero {
+  padding: 120px 40px 60px;
+  text-align: center;
+}
+.hero-small { padding: 90px 40px 40px; }
+
+.hero-title{
+  font-size: clamp(2.2rem, 3.8vw, 3.6rem);
+  background: linear-gradient(90deg, #fff, #c77dff);
+  -webkit-background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 18px #c77dff);
+  margin-bottom: 10px;
+  transform: perspective(900px) rotateX(12deg);
+}
+.hero-subtitle{
+  opacity: 0.9;
+  margin-bottom: 26px;
+}
+
+.section{ padding: 40px 40px 10px; }
+.section-title{
+  text-align: center;
+  font-size: 1.7rem;
+  margin-bottom: 10px;
+}
+.section-subtitle{
+  text-align: center;
+  opacity: 0.85;
+  margin-bottom: 26px;
+}
+
+/* CTA bouton */
+.cta-btn{
+  display: inline-block;
+  padding: 14px 34px;
+  border-radius: 999px;
+  border: 2px solid white;
+  color: white;
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+.cta-btn:hover{
+  background: white;
+  color: black;
+  transform: translateY(-2px) scale(1.05);
+}
+.cta-btn--ghost{
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.35);
+}
+
+/* ===============================
+   CARDS (hover déjà "galaxie")
+================================ */
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 60px 40px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 220px;
+  height: 150px;
+  background: var(--glass);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94),
+              box-shadow 0.3s;
+  text-align: center;
+}
+.card:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 20px 40px var(--glow);
+}
+
+/* ===============================
+   COIFFURES (cards avec image)
+================================ */
+.haircuts-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 26px;
+  padding: 10px 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.haircut-card{
+  width: 100%;
+  height: 260px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  display: block;
+}
+
+.haircut-card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 0.45s ease, filter 0.45s ease;
+  filter: saturate(1.05) contrast(1.05);
+}
+
+.haircut-card:hover img{
+  transform: scale(1.10);
+  filter: saturate(1.2) contrast(1.1);
+}
+
+.haircut-info{
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.16);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+.haircut-info span{
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+
+/* ===============================
+   GALLERY
+================================ */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px 40px 80px;
+}
+
+.gallery-grid img,
+.gallery-grid video {
+  width: 100%;
+  border-radius: 20px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.gallery-grid img:hover,
+.gallery-grid video:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(199,125,255,0.7);
+}
+
+/* ===============================
+   ABOUT
+================================ */
+.about {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  padding: 80px 40px;
+  flex-wrap: wrap;
+}
+
+.about-photo img {
+  width: 280px;
+  border-radius: 50%;
+  animation: float 5s ease-in-out infinite;
+  box-shadow: 0 0 35px rgba(199,125,255,0.6);
+}
+
+.about-text{
+  max-width: 520px;
+}
+
+.about-paragraph{
+  opacity: 0.9;
+  line-height: 1.65;
+  margin-top: 14px;
+}
+
+.about-actions{
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+/* ===============================
+   IFRAME
+================================ */
+.iframe-wrap{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px 80px;
+}
+.iframe-wrap iframe{
+  border-radius: 18px;
+  background: rgba(0,0,0,0.25);
+}
+
+/* ===============================
+   FOOTER
+================================ */
+.footer{
+  padding: 28px 40px 34px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.20);
+  backdrop-filter: blur(10px);
+}
+
+.footer-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-logo{
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.footer-note{
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.footer-links{
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-links a{
+  color: white;
+  text-decoration: none;
+  opacity: 0.9;
+  padding: 8px 12px;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+.footer-links a:hover{
+  background: rgba(255,255,255,0.12);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   PARTICULES
+================================ */
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 50;
+}
+
+/* ===============================
+   DECORS
+================================ */
+.planet {
+  position: absolute;
+  top: 80px;
+  right: 80px;
+  width: 180px;
+  animation: planetFloat 6s cubic-bezier(0.25,0.46,0.45,0.94) infinite;
+  pointer-events: none;
+}
+
+@keyframes planetFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-25px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+.rocket {
+  position: absolute;
+  bottom: 120px;
+  left: -200px;
+  width: 140px;
+  transform: rotate(15deg);
+  pointer-events: none;
+}
+
+.satellite {
+  position: absolute;
+  top: 220px;
+  left: 80px;
+  width: 120px;
+  animation: satelliteFloat 5s cubic-bezier(0.25,0.46,0.45,0.94) infinite;
+  pointer-events: none;
+}
+
+@keyframes satelliteFloat {
+  0% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+  100% { transform: translateY(0) rotate(-5deg); }
+}
+
+.amongus {
+  position: absolute;
+  top: 45%;
+  right: -150px;
+  width: 110px;
+  pointer-events: none;
+}
+
+/* ===============================
+   LOGO QUI TOURNE AU SCROLL (droite)
+================================ */
+.scroll-logo{
+  position: fixed;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  text-decoration: none;
+  color: white;
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 28px rgba(199,125,255,0.22);
+  transform-style: preserve-3d;
+  will-change: transform;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+.scroll-logo span{
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+.scroll-logo.is-visible{
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile */
+@media (max-width: 700px){
+  .navbar{ padding: 0 16px; height: auto; padding-top: 16px; padding-bottom: 16px; }
+  .hero{ padding: 90px 16px 40px; }
+  .cards{ padding: 40px 16px; }
+  .section{ padding: 30px 16px 10px; }
+  .gallery-grid{ padding: 20px 16px 60px; }
+  .haircuts-grid{ padding: 10px 16px 60px; }
+  .iframe-wrap{ padding: 0 16px 70px; }
+  .footer{ padding: 22px 16px 26px; }
+  .planet{ right: 16px; width: 140px; }
+  .satellite{ left: 16px; width: 96px; }
+}
+
+
+
+.iframe-wrap {
+  background: #ffffff;
+  padding: 10px;
+  border-radius: 8px; /* optionnel, enlève si tu veux strictement blanc */
+}
+
+
+/* ===============================
+   RESPONSIVE MOBILE FINAL
+================================ */
+@media (max-width: 768px){
+
+  body{
+    font-size: 0.95rem;
+  }
+
+  /* INTRO */
+  .intro-title{
+    font-size: 2.2rem;
+  }
+  .intro-title span{
+    font-size: 1.8rem;
+  }
+  #enter-btn{
+    width: 100%;
+    max-width: 280px;
+  }
+
+  /* NAVBAR */
+  .navbar{
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+  .navbar ul{
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* HERO */
+  .hero-title{
+    font-size: 2.1rem;
+  }
+  .hero-subtitle{
+    font-size: 0.95rem;
+  }
+
+  /* INDEX – COIFFURES */
+  .haircuts-grid{
+    grid-template-columns: 1fr;
+  }
+  .haircut-card{
+    height: 220px;
+  }
+
+  /* PRESTATIONS – GALERIE */
+  .gallery-grid{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  /* RDV – CARDS */
+  .cards{
+    gap: 16px;
+  }
+  .card{
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    padding: 20px;
+  }
+
+  /* IFRAME GOOGLE CALENDAR */
+  .iframe-wrap iframe{
+    height: 480px;
+  }
+
+  /* ABOUT */
+  .about{
+    flex-direction: column;
+    text-align: center;
+    padding: 50px 16px;
+  }
+  .about-photo img{
+    width: 200px;
+  }
+  .about-actions{
+    justify-content: center;
+  }
+  .about-actions .cta-btn{
+    width: 100%;
+    max-width: 260px;
+  }
+
+  /* FOOTER */
+  .footer-inner{
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* DECORS – PLUS DISCRETS */
+  .planet,
+  .satellite,
+  .amongus{
+    opacity: 0.6;
+  }
+  .rocket{
+    display: none;
+  }
+
+  /* LOGO SCROLL */
+  .scroll-logo{
+    right: 10px;
+    padding: 8px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+
+/* ===============================
+   IPHONE / SAFARI iOS FIX
+================================ */
+@supports (-webkit-touch-callout: none) {
+
+  /* Empêche les bugs de zoom et overflow */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Safe areas (notch, Dynamic Island) */
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Canvas plein écran correct */
+  #stars {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  /* INTRO */
+  .intro-container {
+    min-height: 100svh; /* correct sur iOS */
+  }
+
+  /* HERO */
+  .hero {
+    padding-top: 100px;
+  }
+
+  /* Grilles plus stables sur Safari */
+  .haircuts-grid,
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Images : pas de zoom chelou */
+  img {
+    max-width: 100%;
+    height: auto;
+    -webkit-transform: translateZ(0);
+  }
+
+  /* RDV – Google Calendar */
+  .iframe-wrap iframe {
+    width: 100%;
+    height: 420px;
+    border-radius: 16px;
+  }
+
+  /* Boutons tap-friendly */
+  .cta-btn,
+  #enter-btn {
+    min-height: 44px; /* recommandation Apple */
+  }
+
+  /* Navbar cliquable sans bug */
+  .nav-item a {
+    display: inline-block;
+    padding: 10px 14px;
+  }
+
+  /* Supprime effets trop lourds sur iOS */
+  .card:hover,
+  .haircut-card:hover img {
+    transform: none;
+  }
+
+  /* Décors plus discrets */
+  .planet,
+  .satellite,
+  .amongus {
+    opacity: 0.45;
+  }
+}

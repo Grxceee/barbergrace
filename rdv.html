@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GRVCE BARBER - Rendez-vous</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <canvas id="stars"></canvas>
+
+  <img src="planete.png" alt="Planète" class="planet">
+  <img src="fusee.png" alt="Fusée" class="rocket">
+  <img src="satelite.png" alt="Satellite" class="satellite">
+  <img src="among us.png" alt="Among Us" class="amongus">
+  
+  <a href="index.html" id="scroll-logo" class="scroll-logo" aria-label="Retour accueil">
+    GRVCE<br><span>BARBER</span>
+  </a>
+
+  <nav class="navbar">
+    <a class="logo" href="index.html">GRVCE BARBER</a>
+    <ul>
+      <li class="nav-item"><a href="index.html">Accueil</a></li>
+      <li class="nav-item"><a href="prestations.html">Prestations</a></li>
+      <li class="nav-item"><a href="apropos.html">À propos</a></li>
+      <li class="nav-item"><a href="rdv.html">Prendre rendez-vous</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="hero hero-small">
+      <h1 class="hero-title">Rendez-vous</h1>
+      <p class="hero-subtitle">Réserve en 1 minute sur GOOGLE Calendar tout en bas.</p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Tarifs</h2>
+
+      <div class="cards">
+        <div class="card">Coupe simple<br><strong>10€</strong></div>
+        <div class="card">Contours<br><strong>5€</strong></div>
+        <div class="card">Coupe + barbe<br><strong>15€</strong></div>
+        <div class="card">Déplacement<br><strong>+5€</strong></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Prendre rendez-vous</h2>
+      <p class="section-subtitle">Swipe vers le bas pour choisir ton crénau</p>
+
+      <div class="iframe-wrap">
+        <iframe
+          src="https://calendar.app.google/X7s5x1gVGDosjLzv7"
+          style="border:0"
+          width="100%"
+          height="700"
+          frameborder="0"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-logo">GRVCE BARBER</div>
+        <div class="footer-note">Rendez-vous • Galaxie • Easy</div>
+      </div>
+
+      <div class="footer-links">
+        <a href="index.html">Accueil</a>
+        <a href="prestations.html">Prestations</a>
+        <a href="apropos.html">À propos</a>
+        <a href="rdv.html">Rendez-vous</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
