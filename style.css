@@ -146,11 +146,52 @@ main { padding-bottom: 60px; }
   display: inline-block;
   padding: 14px 34px;
   border-radius: 999px;
-  border: 2px solid white;
+  text-decoration: none;
+  color: white;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.25);
+
+  box-shadow: 0 0 20px rgba(199,125,255,0.25);
+
+  transition: all 0.4s ease;
+  animation: glowPulse 2.5s infinite;
+}
+
+@keyframes navGlow {
+  0%   { box-shadow: 0 0 0 rgba(199,125,255,0); }
+  50%  { box-shadow: 0 0 12px rgba(199,125,255,0.25); }
+  100% { box-shadow: 0 0 0 rgba(199,125,255,0); }
+}
+
+.nav-item:hover{
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(255,255,255,0.15);
+  box-shadow: 0 0 20px rgba(199,125,255,0.5);
+}
+
+.nav-item a{
   color: white;
   text-decoration: none;
-  background: transparent;
-  transition: all 0.4s cubic-bezier(0.68,-0.55,0.27,1.55);
+}
+
+@media (max-width:768px){
+
+  .cta-btn{
+    animation: glowPulse 3s infinite;
+  }
+
+  .nav-item{
+    animation: none; /* plus clean mobile */
+  }
+
+}
+
+.cta-btn:hover{
+  transform: scale(1.07);
+  box-shadow: 0 0 35px rgba(199,125,255,0.6);
+  background: rgba(255,255,255,0.15);
 }
 .cta-btn:hover{
   background: white;
@@ -230,18 +271,22 @@ main { padding-bottom: 60px; }
 
 .haircut-info{
   position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 14px;
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: rgba(0,0,0,0.45);
-  border: 1px solid rgba(255,255,255,0.16);
-  backdrop-filter: blur(10px);
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  align-items: center;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+}
+
+.haircut-info strong{
+  font-size: 0.8rem;
+}
+
+.haircut-info span{
+  font-size: 0.65rem;
 }
 .haircut-info span{
   opacity: 0.9;
@@ -678,5 +723,75 @@ main { padding-bottom: 60px; }
   .satellite,
   .amongus {
     opacity: 0.45;
+  }
+}
+/* ===============================
+   RDV MOBILE DESIGN PROPRE
+================================ */
+
+.alert-text{
+  text-align: center;
+  font-weight: 600;
+  animation: alertFade 2s infinite;
+}
+
+@keyframes alertFade {
+  0%   { color: white; }
+  50%  { color: #ff2b2b; }
+  100% { color: white; }
+}
+
+/* Prix style mobile */
+.price-grid{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+  padding: 10px 20px 30px;
+}
+
+.price-card{
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.price-card:hover{
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(199,125,255,0.5);
+}
+
+/* Agenda plus clean */
+.agenda-section{
+  padding-top: 10px;
+}
+
+.iframe-wrap iframe{
+  width: 100%;
+  height: 550px;
+  border-radius: 16px;
+}
+
+/* ===============================
+   MOBILE GRID COIFFURES (FIX)
+================================ */
+@media (max-width:768px){
+  .haircuts-grid{
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+  }
+
+  .haircut-card{
+    height: 160px;
+  }
+
+  .price-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .iframe-wrap iframe{
+    height: 500px;
   }
 }
