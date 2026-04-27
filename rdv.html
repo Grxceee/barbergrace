@@ -9,80 +9,85 @@
 </head>
 <body>
 
-  <canvas id="stars"></canvas>
+<canvas id="stars"></canvas>
 
-  <img src="planete.png" alt="Planète" class="planet">
-  <img src="fusee.png" alt="Fusée" class="rocket">
-  <img src="satelite.png" alt="Satellite" class="satellite">
-  <img src="among us.png" alt="Among Us" class="amongus">
-  
- <a href="rdv.html" id="scroll-logo" class="scroll-logo" aria-label="Retour accueil">
-    prendre<br><span>rendez-vous</span>
-  </a>
+<img src="planete.png" class="planet">
+<img src="fusee.png" class="rocket">
+<img src="satelite.png" class="satellite">
+<img src="among us.png" class="amongus">
 
-  <nav class="navbar">
-    <a class="logo" href="accueil.html">GRVCE BARBER</a>
+<nav class="navbar">
+  <a class="logo" href="accueil.html">GRVCE BARBER</a>
+</nav>
 
-    <ul>
-      <li class="nav-item"><a href="accueil.html">Accueil</a></li>
-      <li class="nav-item"><a href="prestations.html">Prestations</a></li>
-      <li class="nav-item"><a href="apropos.html">À propos</a></li>
-      <li class="nav-item"><a href="rdv.html">Prendre rendez-vous</a></li>
-    </ul>
-  </nav>
+<main>
 
-  <main>
-    <section class="hero hero-small">
-      <h1 class="hero-title">Rendez-vous</h1>
-      <p class="hero-subtitle">Réserve en 1 minute sur GOOGLE Calendar tout en bas.</p>
-    </section>
+  <section class="hero hero-small">
+    <h1 class="hero-title">Rendez-vous</h1>
+    <p class="hero-subtitle">Réserve en 1 minute</p>
+  </section>
 
-    <section class="section">
-      <h2 class="section-title">
-      ! Attention ! Du lundi au vendredi les prestations coûteront 5€ de plus.)</h2>
+  <!-- ⚠️ MESSAGE -->
+  <section class="section">
+    <h2 class="alert-text">
+      ⚠️ Du lundi au vendredi +5€
+    </h2>
+  </section>
 
-      <div class="cards">
-        <div class="card">Coupe<br><strong>10€</strong></div>
-        <div class="card">Contours<br><strong>5€</strong></div>
-        <div class="card">Coupe + barbe<br><strong>15€</strong></div>
-        <div class="card">Déplacement<br><strong>+5€</strong></div>
-      </div>
-    </section>
+  <!-- PRIX -->
+  <section class="section">
+    <div class="price-grid">
 
-    <section class="section">
-      <h2 class="section-title">Prendre rendez-vous</h2>
-      <p class="section-subtitle">Swipe vers le bas pour choisir ton crénau</p>
-
-      <div class="iframe-wrap">
-        <iframe
-          src="https://calendar.app.google/X7s5x1gVGDosjLzv7"
-          style="border:0"
-          width="100%"
-          height="700"
-          frameborder="0"
-          loading="lazy"
-        ></iframe>
-      </div>
-    </section>
-  </main>
-
-   <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="footer-logo">GRVCE BARBER</div>
-        <div class="footer-note">Style galaxie</div>
+      <div class="price-card" onclick="scrollToAgenda()">
+        <span>Coupe</span>
+        <strong>10€</strong>
       </div>
 
-      <div class="footer-links">
-        <a href="accueil.html">Accueil</a>
-        <a href="prestations.html">Prestations</a>
-        <a href="apropos.html">À propos</a>
-        <a href="rdv.html">Rendez-vous</a>
+      <div class="price-card" onclick="scrollToAgenda()">
+        <span>Contours</span>
+        <strong>5€</strong>
       </div>
+
+      <div class="price-card" onclick="scrollToAgenda()">
+        <span>Coupe + barbe</span>
+        <strong>15€</strong>
+      </div>
+
+      <div class="price-card" onclick="scrollToAgenda()">
+        <span>Déplacement</span>
+        <strong>+5€</strong>
+      </div>
+
     </div>
-  </footer>
-  
-  <script src="script.js"></script>
+  </section>
+
+  <!-- AGENDA -->
+  <section class="section agenda-section" id="agenda">
+    <h2 class="section-title">Choisis ton créneau</h2>
+
+    <div class="iframe-wrap">
+      <iframe
+        src="https://calendar.app.google/X7s5x1gVGDosjLzv7"
+        frameborder="0"
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">GRVCE BARBER</div>
+  </div>
+</footer>
+
+<script>
+function scrollToAgenda(){
+  document.getElementById("agenda").scrollIntoView({ behavior: "smooth" });
+}
+</script>
+
+<script src="script.js"></script>
 </body>
 </html>
-
